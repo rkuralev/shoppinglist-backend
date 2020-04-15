@@ -1,17 +1,24 @@
 package com.kuralev.java.shoppinglist.model;
 
+import lombok.Getter;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class ShoppingList {
+    @Getter
     private final Map<Integer, Item> listData = new HashMap<>();
-    private static final AtomicInteger INTERNAL_ITEM_ID = new AtomicInteger();
 
-    public void add(Item item) {
-        listData.put(INTERNAL_ITEM_ID.incrementAndGet(), item);
+    public boolean add(Item item) {
+        final int itemId = item.getId();
+        if (listData.containsKey(itemId))
+            return false;
+        else {
+            listData.put(itemId, item);
+            return true;
+        }
     }
 
     public boolean update(Item item, int id) {

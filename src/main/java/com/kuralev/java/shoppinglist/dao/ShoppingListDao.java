@@ -8,7 +8,7 @@ import java.util.List;
 public interface ShoppingListDao {
     void createList(String uuid, ShoppingList shoppingList);
     ShoppingList readList(String uuid);
-    void addItem(String listUuid, Item item);
+    boolean addItem(String listUuid, Item item);
     List<Item> readAllItems(String listUuid);
     boolean updateItem(String listUuid, Item item, int id);
     boolean deleteItem(String listUuid, int itemId);

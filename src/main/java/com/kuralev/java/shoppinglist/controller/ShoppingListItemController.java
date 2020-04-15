@@ -35,6 +35,15 @@ public class ShoppingListItemController {
                 : new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+    @PostMapping("lists/{uuid}/items")
+    public ResponseEntity<?> create(@PathVariable(name = "uuid") String listUuid,
+                                    @RequestBody Item item) {
+        boolean created = shoppingListItemService.create(listUuid, item);
+        return created
+                ? new ResponseEntity<>(HttpStatus.CREATED)
+                : new ResponseEntity<>(HttpStatus.NOT_MODIFIED);
+    }
+
     @PutMapping("/lists/{uuid}/items/{id}")
     public ResponseEntity<?> update(@PathVariable(name = "uuid") String listUuid,
                                     @PathVariable(name = "id") int itemId,

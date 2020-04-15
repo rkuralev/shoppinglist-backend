@@ -5,6 +5,8 @@ import com.kuralev.java.shoppinglist.model.ShoppingList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 public class ShoppingListServiceImpl implements ShoppingListService {
     final private ShoppingListDao dao;
@@ -16,8 +18,8 @@ public class ShoppingListServiceImpl implements ShoppingListService {
 
     @Override
     public String create(ShoppingList shoppingList) {
-        String uuid = "uuid34087398734"; //TODO generate random uuid using UUID class
-        dao.createList(uuid, new ShoppingList());
+        String uuid = UUID.randomUUID().toString();
+        dao.createList(uuid, shoppingList);
         return uuid;
     }
 

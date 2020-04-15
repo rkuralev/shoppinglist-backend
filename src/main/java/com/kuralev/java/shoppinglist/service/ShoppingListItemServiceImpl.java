@@ -18,8 +18,8 @@ public class ShoppingListItemServiceImpl implements ShoppingListItemService {
     }
 
     @Override
-    public void create(String listUuid, Item item) {
-        dao.addItem(listUuid, item);
+    public boolean create(String listUuid, Item item) {
+        return dao.addItem(listUuid, item);
     }
 
     @Override

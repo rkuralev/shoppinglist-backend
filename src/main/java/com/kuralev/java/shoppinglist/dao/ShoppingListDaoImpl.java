@@ -24,8 +24,8 @@ public class ShoppingListDaoImpl implements ShoppingListDao {
     }
 
     @Override
-    public void addItem(String listUuid, Item item) {
-        DATA_STORAGE.get(listUuid).add(item);
+    public boolean addItem(String listUuid, Item item) {
+        return DATA_STORAGE.get(listUuid).add(item);
     }
 
     @Override
