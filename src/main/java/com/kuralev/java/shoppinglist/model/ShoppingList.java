@@ -1,43 +1,29 @@
 package com.kuralev.java.shoppinglist.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
+import lombok.Setter;
+import org.hibernate.annotations.Type;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import javax.persistence.*;
 import java.util.List;
-import java.util.Map;
+import java.util.UUID;
 
+@Entity
+@Table(name = "lists")
+@Getter @Setter
 public class ShoppingList {
-    @Getter
-    private final Map<Integer, Item> listData = new HashMap<>();
+    @Id
+    @Column(unique = true)
+    @Type(type="uuid-char")
+    @JsonIgnore
+    private UUID uuid;
 
-    public boolean add(Item item) {
-        final int itemId = item.getId();
-        if (listData.containsKey(itemId))
-            return false;
-        else {
-            listData.put(itemId, item);
-            return true;
-        }
-    }
-
-    public boolean update(Item item, int id) {
-        if (listData.containsKey(id)) {
-            listData.put(id, item);
-            return true;
-        }
-        return false;
-    }
-
-    public boolean remove(int itemId) {
-        return listData.remove(itemId) != null;
-    }
-
-    public Item get(int itemId) {
-        return listData.get(itemId);
-    }
-
-    public List<Item> readAll() {
-        return new ArrayList<>(listData.values());
-    }
+    @OneToMany(
+            mappedBy = "shoppingList",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER,
+            orphanRemoval = true
+    )
+    private List<Item> items;
 }

@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 public class ShoppingListItemController {
@@ -19,7 +20,7 @@ public class ShoppingListItemController {
     }
 
     @GetMapping("/lists/{uuid}/items")
-    public ResponseEntity<List<Item>> readAll(@PathVariable(name = "uuid") String listUuid) {
+    public ResponseEntity<List<Item>> readAll(@PathVariable(name = "uuid") UUID listUuid) {
         List<Item> items = shoppingListItemService.readAll(listUuid);
         return items != null
                 ? new ResponseEntity<>(items, HttpStatus.OK)
@@ -27,7 +28,7 @@ public class ShoppingListItemController {
     }
 
     @GetMapping("/lists/{uuid}/items/{id}")
-    public ResponseEntity<Item> read(@PathVariable(name = "uuid") String listUuid,
+    public ResponseEntity<Item> read(@PathVariable(name = "uuid") UUID listUuid,
                                      @PathVariable(name = "id") int itemId) {
         Item item = shoppingListItemService.read(listUuid, itemId);
         return item != null
@@ -36,7 +37,7 @@ public class ShoppingListItemController {
     }
 
     @PostMapping("lists/{uuid}/items")
-    public ResponseEntity<?> create(@PathVariable(name = "uuid") String listUuid,
+    public ResponseEntity<?> create(@PathVariable(name = "uuid") UUID listUuid,
                                     @RequestBody Item item) {
         boolean created = shoppingListItemService.create(listUuid, item);
         return created
@@ -45,7 +46,7 @@ public class ShoppingListItemController {
     }
 
     @PutMapping("/lists/{uuid}/items/{id}")
-    public ResponseEntity<?> update(@PathVariable(name = "uuid") String listUuid,
+    public ResponseEntity<?> update(@PathVariable(name = "uuid") UUID listUuid,
                                     @PathVariable(name = "id") int itemId,
                                     @RequestBody Item item) {
         boolean updated = shoppingListItemService.update(listUuid, item, itemId);
@@ -55,7 +56,7 @@ public class ShoppingListItemController {
     }
 
     @DeleteMapping("/lists/{uuid}/items/{id}")
-    public ResponseEntity<?> delete(@PathVariable(name = "uuid") String listUuid,
+    public ResponseEntity<?> delete(@PathVariable(name = "uuid") UUID listUuid,
                                     @PathVariable(name = "id") int itemId) {
         boolean deleted = shoppingListItemService.delete(listUuid, itemId);
         return deleted

@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
+
 @RestController
 public class ShoppingListController {
     private final ShoppingListService shoppingListService;
@@ -18,12 +20,12 @@ public class ShoppingListController {
 
     @PostMapping("/lists")
     public ResponseEntity<?> create(@RequestBody ShoppingList shoppingList) {
-        String uuid = shoppingListService.create(shoppingList);
+        UUID uuid = shoppingListService.create(shoppingList);
         return new ResponseEntity<>(uuid, HttpStatus.CREATED);
     }
 
     @GetMapping("/lists/{uuid}")
-    public ResponseEntity<ShoppingList> read(@PathVariable(name = "uuid") String uuid) {
+    public ResponseEntity<ShoppingList> read(@PathVariable(name = "uuid") UUID uuid) {
         ShoppingList shoppingList = shoppingListService.read(uuid);
 
         return shoppingList != null
