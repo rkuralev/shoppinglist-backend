@@ -162,5 +162,6 @@ DELETE /lists/952911af-0bbb-45a9-b946-3f4f0a6bff20/items/4
 ```
 Response will be `HTTP/200 OK`
 # Next steps
+* Add tests
 * Improve errors handling
 * Implementing a job to clean deleted items from a database
