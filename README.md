@@ -6,7 +6,7 @@ list sharing and (most important) is privacy oriented which means that it doesn'
 
 So I decided to develop my own shopping list. As I was learning Java development and was keen to try Spring Framework, I decided to start with a backend.
 
-**Disclaimer:** I know that the most convenient way to share data on Android platform is Google Firebase, but I intentionnaly declined this option as it lacks privacy and leads to a vendor lock, which I want to avoid.
+**Disclaimer:** I know that the most convenient way to share data on Android platform is Google Firebase, but I intentionnaly declined this option.
 # How to use it
 ## Pre-reqs
 * MySQL
