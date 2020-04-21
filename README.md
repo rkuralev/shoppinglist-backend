@@ -7,6 +7,11 @@ list sharing and (most important) is privacy oriented which means that it doesn'
 So I decided to develop my own shopping list. As I was learning Java development and was keen to try Spring Framework, I decided to start with a backend.
 
 **Disclaimer:** I know that the most convenient way to share data on Android platform is Google Firebase, but I intentionnaly declined this option.
+
+# Next steps
+* Add tests
+* Improve errors handling
+* Implementing a job to clean deleted items from a database
 # How to use it
 ## Pre-reqs
 * MySQL
@@ -161,7 +166,3 @@ Response will be `HTTP/304 Modified`
 DELETE /lists/952911af-0bbb-45a9-b946-3f4f0a6bff20/items/4
 ```
 Response will be `HTTP/200 OK`
-# Next steps
-* Add tests
-* Improve errors handling
-* Implementing a job to clean deleted items from a database
