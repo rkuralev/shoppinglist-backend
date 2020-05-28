@@ -21,7 +21,7 @@ public class ShoppingListController {
     @PostMapping("/lists")
     public ResponseEntity<?> create(@RequestBody ShoppingList shoppingList) {
         UUID uuid = shoppingListService.create(shoppingList);
-        return new ResponseEntity<>(uuid, HttpStatus.CREATED);
+        return new ResponseEntity<>(uuid.toString(), HttpStatus.CREATED);
     }
 
     @GetMapping("/lists/{uuid}")
