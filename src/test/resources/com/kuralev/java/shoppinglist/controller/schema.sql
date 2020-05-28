@@ -8,13 +8,12 @@ CREATE TABLE lists
 
 CREATE TABLE items
 (
-    internal_id bigint NOT NULL,
+    internal_id bigint NOT NULL PRIMARY KEY ,
     checked bit,
     deleted bit,
     description varchar(255),
     id int,
     priority int,
     list_id varchar(255) NOT NULL,
-    PRIMARY KEY (internal_id),
     FOREIGN KEY (list_id) REFERENCES lists(uuid)
 );
