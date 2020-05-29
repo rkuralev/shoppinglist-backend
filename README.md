@@ -8,8 +8,7 @@ So I decided to develop my own shopping list. As I was learning Java development
 
 **Disclaimer:** I know that the most convenient way to share data on Android platform is Google Firebase, but I intentionnaly declined this option.
 
-# Next steps
-* Add tests
+# Possible improvements
 * Improve errors handling
 * Implementing a job to clean deleted items from a database
 # How to use it
@@ -158,7 +157,7 @@ POST /lists/952911af-0bbb-45a9-b946-3f4f0a6bff20/items/4
     "deleted": false
 }
 ```
-Response will be `HTTP/304 Modified`
+Response will be `HTTP/200 OK`
 ### Deleting an existing item
 **Note:** items are not deleted only marked as deleted, otherwise it will be difficult to understand on a client if an item was deleted or never existed
 **Request:**
